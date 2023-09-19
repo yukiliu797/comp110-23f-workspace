@@ -11,7 +11,6 @@ answer_idx: int = 0
 yellow_count: int = 0
 yellow_idx: int = 0
 
-
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
