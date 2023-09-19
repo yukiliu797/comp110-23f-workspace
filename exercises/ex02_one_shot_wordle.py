@@ -20,10 +20,10 @@ while len(word) != answerlen:
     word = input(f"That was not {answerlen} letters! Try again: ")
 
 
-while word_idx<answerlen:
+while word_idx < answerlen:
     yellow_count = 0
     yellow_idx = 0
-    answer_character: str = str (answer[answer_idx])
+    answer_character: str = str(answer[answer_idx])
     word_character: str = str(word[word_idx])
     if answer_character == word_character:
         print(GREEN_BOX, end="")
@@ -41,13 +41,8 @@ while word_idx<answerlen:
 
 print("")
 
-if len(word)==6:
+if len(word) == 6:
     if word == answer:
         print("Woo! You got it! ")
     else:
         print("Not quite! Play again soon!")
-
-
-
-
-
