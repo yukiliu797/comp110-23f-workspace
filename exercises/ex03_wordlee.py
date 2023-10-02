@@ -1,0 +1,75 @@
+"""ex03 Structured Wordle."""
+
+__author__ = "730571715"
+
+
+def contains_char(word: str, character: str) -> bool:
+    """Returns for single string found."""
+    assert len(character) == 1
+    count: int = 0
+    while count < len(word):
+        if word[count] == character:
+            return True
+        count += 1
+    return False
+
+
+def emojified(guess: str, secret: str) -> str:
+    """Compare guess and secret."""
+    assert len(guess) == len(secret)
+    WHITE_BOX: str = "\U00002B1C"
+    GREEN_BOX: str = "\U0001F7E9"
+    YELLOW_BOX: str = "\U0001F7E8"
+    contains_char(WHITE_BOX, "B")
+    emoji: str = ""
+    count: int = 0
+    while count < len(guess):
+        if guess[count] == secret[count]:
+            emoji = f"{emoji}{GREEN_BOX}"
+        else:
+            location: bool = False
+            i: int = 0
+            while location is not True and i < len(guess):
+                if guess[count] == secret[i]:
+                    location = True
+                else:
+                    i += 1
+            if location is True:
+                emoji = f"{emoji}{YELLOW_BOX}"
+            else:
+                emoji = f"{emoji}{WHITE_BOX}"
+        count += 1
+    return emoji
+
+
+def input_guess(length: int) -> str:
+    """Compare the length of guess and expected length."""
+    guess: str = str(input(f"Enter a {length} character word: "))
+    guess_length: int = len(guess)
+    while guess_length != length:
+        guess = str(input(f"That wasn't {length} chars! Try again: "))
+        guess_length = len(guess)
+    return guess
+
+
+def main() -> None:
+    """The entrypoint of the program and main game loop."""
+    turns: int = 1
+    win: bool = False
+    while turns <= 6 and win is False:
+        print(f"=== Turn {turns}/6 ===") 
+        guess: str = input_guess(len("codes"))
+        emoji: str = emojified(guess, "codes")
+        print(emoji)
+        if guess == "codes":
+            win = True
+        else:
+            turns += 1
+    if win is True:
+        print(f"You won in {turns}/6 turns!")
+    else:
+        print("X/6 - Sorry, try again tomorrow!")
+
+
+if __name__ == "__main__":
+    main()
