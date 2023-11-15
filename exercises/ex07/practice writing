@@ -1,15 +1,1 @@
-"""sep 26"""
-
-def main():
-    y: float = double(2,0)
-    print(halve(y))
-
-def halve(x: float) -> float:
-    print(f"halve({x})")
-    return x/2.0
-
-def double(x: float) -> float:
-    print(f"double({x})")
-    return x * 2.0
-
-main()
+x: list[str]

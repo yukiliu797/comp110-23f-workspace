@@ -1,4 +1,4 @@
-"""ex03 Structured Wordle."""
+"""Ex03 Structured Wordle."""
 
 __author__ = "730571715"
 
@@ -6,11 +6,11 @@ __author__ = "730571715"
 def contains_char(word: str, character: str) -> bool:
     """Returns for single string found."""
     assert len(character) == 1
-    count: int = 0
-    while count < len(word):
-        if word[count] == character:
+    v: int = 0
+    while v < len(word):
+        if word[v] == character:
             return True
-        count += 1
+        v = v + 1
     return False
 
 
@@ -22,15 +22,15 @@ def emojified(guess: str, secret: str) -> str:
     YELLOW_BOX: str = "\U0001F7E8"
     contains_char(WHITE_BOX, "B")
     emoji: str = ""
-    count: int = 0
-    while count < len(guess):
-        if guess[count] == secret[count]:
+    v: int = 0
+    while v < len(guess):
+        if guess[v] == secret[v]:
             emoji = f"{emoji}{GREEN_BOX}"
         else:
             location: bool = False
             i: int = 0
             while location is not True and i < len(guess):
-                if guess[count] == secret[i]:
+                if guess[v] == secret[i]:
                     location = True
                 else:
                     i += 1
@@ -38,7 +38,7 @@ def emojified(guess: str, secret: str) -> str:
                 emoji = f"{emoji}{YELLOW_BOX}"
             else:
                 emoji = f"{emoji}{WHITE_BOX}"
-        count += 1
+        v = v + 1
     return emoji
 
 
